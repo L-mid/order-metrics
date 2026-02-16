@@ -1,0 +1,7 @@
+.venv
+.pytest_cache
+postgres_login.txt
+*__pycache__
+zip_cmd.py
+*zip
+

@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "order-metrics"
+version = "0.1.0"
+description = "Tiny CLI reports + query tests on seeded Postgres practice tables."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "L" }]
+dependencies = [
+  "psycopg[binary]>=3.1",
+]
+
+# Creates the CLI command: `order-metrics ...`
+[project.scripts]
+order-metrics = "order_metrics.cli:main"
+
+
+# Optional but nice: `pip install -e ".[dev]"`
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.6",
+  "mypy>=1.10",
+  "types-setuptools",
+]
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]  # optional: let line-length be enforced by formatter/teams
+
+
+[tool.pytest.ini_options]
+# pythonpath = ["."]      # manual pytest path
+testpaths = ["tests"]
+addopts = "-q"
+
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+
+
+# --- Packaging:  ---
+[tool.hatch.build.targets.wheel]
+packages = ["src/order_metrics"]
+include = [
+  "src/order_metrics/**",
+  "README.md",
+  "pyproject.toml",
+]
