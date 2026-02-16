@@ -24,7 +24,7 @@ python -m pip show order-metrics
 ```
 
 # Order metrics
-Display tables of SQL queries on seeded data. 
+Display tables of SQL queries on seeded data tables. 
 
 
 # Usage:
@@ -47,8 +47,24 @@ Full supported options are:
 ### To see all avalible tables at once, use `all`: 
 - `order-metrics all`
 
-And every result will display in the termial at once!
+And every query's result will display in the termial at once!
 
 
 ![alt text](assets/all.png)
 
+
+
+# Archetectural overview:
+
+```mermaid
+flowchart TD
+  CLI["order-metrics (CLI)"] --> CMD["cmd_print()"]
+  CMD --> SQL["read_sql() -> sql/*.sql"]
+  CMD --> RUN["run_query()"]
+  RUN --> DB["Postgres (psycopg)"]
+  RUN --> RENDER["render_table()"]
+  RENDER --> OUT["prints to terminal"]
+
+  TESTS["pytest"] --> RUN
+  TESTS --> SQLCHECKS["sql/checks/*.sql (grain + fanout guards)"]
+  ```
