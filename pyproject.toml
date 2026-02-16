@@ -9,17 +9,28 @@ description = "Tiny CLI reports + query tests on seeded Postgres practice tables
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "L" }]
-dependencies = [
-  "psycopg[binary]>=3.1",
+
+authors = [
+  { name = "L" },
+  { email = "midjourney4321@gmail.com" }
 ]
+
+dependencies = [
+  "psycopg[binary]>=3.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/L-mid/order-metrics"
+Repository = "https://github.com/L-mid/order-metrics"
+
+
 
 # Creates the CLI command: `order-metrics ...`
 [project.scripts]
 order-metrics = "order_metrics.cli:main"
 
 
-# Optional but nice: `pip install -e ".[dev]"`
+# Optionals:
 [project.optional-dependencies]
 dev = [
   "pytest>=8",

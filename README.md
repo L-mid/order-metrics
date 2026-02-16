@@ -8,7 +8,7 @@ python -m pip install -e ".[dev]"
 # Set the DB connection and run
 $env:DATABASE_URL="postgres://<user>:<pass>@localhost:5432/<db>"
 
-# (optional) additionally test cli works and tests
+# (optional) additionally test cli works and tests run
 order-metrics all
 pytest -q
 
