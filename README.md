@@ -24,7 +24,7 @@ python -m pip show order-metrics
 ```
 
 # Order metrics
-Display tables of SQL queries on seeded data tables. 
+Display pretty tables from SQL queries on seeded data tables. 
 
 
 # Usage:
